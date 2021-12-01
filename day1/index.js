@@ -3,28 +3,13 @@ const fs = require("fs");
 const file = fs.readFileSync('input.txt');
 const depths = file.toString().split('\r\n').map(x => Number(x));
 
-let x = 0;
-for(let i = 1; i<depths.length; i++) {
-    if(depths[i] > depths[i-1]) {
-        x++;
-    }
-}
-
+const x = depths.filter((_, i, arr) => i > 0 && arr[i] > arr[i - 1]).length;
 console.log("result part 1: ", x);
 
-
-
-
-const sums = [];
-for(let i = 0; i<depths.length - 2; i++) {
-    sums.push(depths[i] + depths[i+1] + depths[i+2]);
-}
-
-let y = 0;
-for(let i = 1; i<sums.length; i++) {
-    if(sums[i] > sums[i-1]) {
-        y++;
-    }
-}
+const y = depths
+            .filter((_, i, arr) => 
+                        i < arr.length - 2 && 
+                        (arr[i] + arr[i+1] + arr[i+2] ) < (arr[i+1] + arr[i+2] + arr[i+3])
+        ).length;
 
 console.log("result part 2: ", y);
