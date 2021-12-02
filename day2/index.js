@@ -16,7 +16,6 @@ const part1Reducer = (state, [type, number]) => {
                 default:
                         return state;
         }
-
 }
 
 const part2Reducer = (state, [type, number]) => {
