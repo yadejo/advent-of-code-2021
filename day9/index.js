@@ -33,9 +33,6 @@ let lines = fileContent.toString().split('\n').map(x => x.split('').map(x => par
     console.log("Part 2: ", first * sec * third);
 })();
 
-
-
-
 function isLowPoint(x, y, array) {
     return Math.min(array[x][y], ...getAdjecentValues(array, x, y)) === array[x][y] && [array[x][y], ...getAdjecentValues(array, x, y)].filter(p => p == array[x][y]).length === 1;
 }
